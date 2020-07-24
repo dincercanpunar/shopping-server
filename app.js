@@ -1,16 +1,29 @@
 const express = require('express');
+const mongoose = require('mongoose')
 require('dotenv').config();
 const { ApolloServer } = require('apollo-server-express')
 const { importSchema } = require('graphql-import');
 
 const resolvers = require('./graphql/resolvers/index');
 
+//models
+const User = require('./models/User');
+
 const server = new ApolloServer({
-    typeDefs: importSchema('./graphql/types/schema.graphql'),
-    resolvers
+    typeDefs: importSchema('./graphql/schema.graphql'),
+    resolvers,
+    context: {
+        User
+    }
 });
 
-console.log(process.env.DB_HOST)
+mongoose.connect(process.env.DB_URI, { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true, 
+    useCreateIndex: true,
+})
+    .then(() => console.log("Connected to MongoDB"))
+    .catch(e => console.log(e))
 
 const app = express();
 server.applyMiddleware({app});
