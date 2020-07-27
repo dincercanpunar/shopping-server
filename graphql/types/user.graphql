@@ -1,17 +1,24 @@
 type Query {
-    user: User!
+    activeUser: User
 }
 
 type User {
+    id: ID!
     username: String!
     createdAt: String!
 }
 
 type Mutation {
-    createUser(data: CreateUserInput!): User
+    createUser(data: CreateUserInput!): Token
+    signIn(data: SigninUserInput!): Token
 }
 
 input CreateUserInput {
+    username: String!
+    password: String!
+}
+
+input SigninUserInput {
     username: String!
     password: String!
 }

@@ -1,2 +1,9 @@
 #import Query from './types/user.graphql'
 #import Mutation from './types/user.graphql'
+#import Query from './types/product.graphql'
+#import Mutation from './types/product.graphql'
+#import Query from './types/cart.graphql'
+#import Mutation from './types/cart.graphql'
+#import Query from './types/buying.graphql'
+
+#import Query from './types/token.graphql'

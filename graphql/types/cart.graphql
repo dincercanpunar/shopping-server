@@ -1,0 +1,19 @@
+type Query {
+    carts: [Cart!]!
+}
+
+type Cart {
+    id: ID!
+    price: Float!
+    isActive: Boolean!
+    user: User!
+    buyings: [Buying!]!
+}
+
+type Mutation {
+    createCart(data: CreateCartInput!): Cart!
+}
+
+input CreateCartInput {
+    buyings: [CreateBuyingInput!]!
+}

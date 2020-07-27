@@ -1,0 +1,15 @@
+type Query {
+    buyings: [Buying!]!
+}
+
+type Buying {
+    id: ID!
+    quantity: Int!
+    isActive: Boolean!
+    product: Product!
+}
+
+input CreateBuyingInput {
+    product_id: ID!
+    quantity: Int!
+}
